@@ -5,7 +5,6 @@
 - [ ] Definir o background do jogo
 	- [ ] Adicionar o efeito Parallax
 - [ ] Obstáculos
-- [ ] 
 
 ## Criação básica do personagem
 - [x] Sprites obtidas através do Google Imagens (apenas para fins de estudo)
@@ -19,7 +18,6 @@
 	- [x] Configurado os sprites da animação
 - [x] Configurado a variável **speed (float)** para ativar a animação Run
 	- [x] Setado a transição da animação para acontecer somente quando **speed** for maior que 0.01 e para parar quando for menor que isso
-- [ ] 
 
 ## Ações do Personagem
 - [x] Parado / Idle animation
@@ -40,6 +38,3 @@
 
 ## Bugs
 - [x] Há um delay entre a animação Run > Idle > Run *(corrigido setando o Transition Duration e Offset como 0)*
-- [ ] 
-
-
