@@ -16,4 +16,7 @@
 - [x] Configurado a variável **speed (float)** para ativar a animação Run
 	- [x] Setado a transição da animação para acontecer somente quando **speed** for maior que 0.01 e para parar quando for menor que isso
 
+## Bugs
+- [x] Há um delay entre a animação Run > Idle > Run *(corrigido setando o Transition Duration e Offset como 0)*
+
 
