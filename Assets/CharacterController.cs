@@ -5,9 +5,14 @@ using UnityEngine;
 public class CharacterController : MonoBehaviour {
 	[Header("Settings")]
 	[SerializeField] private float maxSpeed = 10f;
-	
+	[SerializeField] private float jumpForce = 100f;
+	[SerializeField] private Transform groundCheck;
+	[SerializeField] private LayerMask whatIsGround;
+
 	#region Private variables
-	private bool facingRight = true;
+	bool facingRight = true;
+	bool grounded = false;
+	float groundRadius = 0.2f;
 	#endregion
 
 	#region Animators
@@ -19,8 +24,19 @@ public class CharacterController : MonoBehaviour {
 		anim = GetComponent<Animator>();
 	}
 	
+	void Update()
+	{
+		if (Input.GetKeyDown(KeyCode.Space) && grounded)
+		{
+			Jump();
+		}
+	}
+
 	// Update is called once per frame
 	void FixedUpdate () {
+		grounded = Physics2D.OverlapCircle(groundCheck.position, groundRadius, whatIsGround);
+		anim.SetBool("Ground", grounded);
+
 		float move = Input.GetAxis("Horizontal");
 		anim.SetFloat("speed", Mathf.Abs(move));
 		Rigidbody2D r2d = GetComponent<Rigidbody2D>();
@@ -33,6 +49,14 @@ public class CharacterController : MonoBehaviour {
 			Flip();
 		}
 	}
+
+	void Jump()
+	{
+		Debug.Log("VELOCITY => " + GetComponent<Rigidbody2D>().velocity);
+		// GetComponent<Rigidbody2D>().AddForce(Vector2.up * 100f, ForceMode2D.Impulse);
+		GetComponent<Rigidbody2D>().AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+	}
+
 
 	void Flip()
 	{
